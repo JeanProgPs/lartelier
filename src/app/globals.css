@@ -1,0 +1,292 @@
+/* ============================================================
+   L'Atelier Rio — Design System Global CSS
+   TailwindCSS v4 syntax: @import + @theme block
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap");
+
+@import "tailwindcss";
+
+/* ——————————————————————————————————————————
+   Theme Tokens (TailwindCSS v4 @theme)
+—————————————————————————————————————————— */
+@theme {
+  /* Cores principais */
+  --color-brand-black: #0A0A0A;
+  --color-brand-white: #FAFAFA;
+  --color-brand-gray-50: #F7F5F3;
+  --color-brand-gray-100: #EDEAE6;
+  --color-brand-gray-200: #D9D4CE;
+  --color-brand-gray-400: #9B9490;
+  --color-brand-gray-600: #6B6560;
+  --color-brand-gray-800: #3A3633;
+  --color-brand-nude: #C4A882;
+  --color-brand-nude-light: #E8D5BC;
+  --color-brand-nude-dark: #A08060;
+
+  /* Tipografia */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  /* Espaçamentos e raios */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  /* Sombras */
+  --shadow-product: 0 4px 24px rgba(0,0,0,0.08);
+  --shadow-hover: 0 8px 40px rgba(0,0,0,0.14);
+  --shadow-modal: 0 24px 64px rgba(0,0,0,0.18);
+
+  /* Transições */
+  --ease-premium: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --duration-fast: 200ms;
+  --duration-normal: 400ms;
+  --duration-slow: 600ms;
+}
+
+/* ——————————————————————————————————————————
+   Reset e Base
+—————————————————————————————————————————— */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-brand-white);
+  color: var(--color-brand-black);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ——————————————————————————————————————————
+   Tipografia
+—————————————————————————————————————————— */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* ——————————————————————————————————————————
+   Utilitários customizados
+—————————————————————————————————————————— */
+
+/* Scrollbar premium */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--color-brand-gray-50); }
+::-webkit-scrollbar-thumb { background: var(--color-brand-gray-200); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-brand-gray-400); }
+
+/* Seleção de texto */
+::selection {
+  background: var(--color-brand-nude-light);
+  color: var(--color-brand-black);
+}
+
+/* ——————————————————————————————————————————
+   Animações utilitárias
+—————————————————————————————————————————— */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--duration-normal) var(--ease-premium) both;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight var(--duration-normal) var(--ease-premium) both;
+}
+
+/* Skeleton loader */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-brand-gray-100) 25%,
+    var(--color-brand-gray-50) 50%,
+    var(--color-brand-gray-100) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ——————————————————————————————————————————
+   Componentes globais
+—————————————————————————————————————————— */
+
+/* Overlay backdrop */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 40;
+}
+
+/* Container da loja */
+.store-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (min-width: 768px) {
+  .store-container { padding: 0 40px; }
+}
+
+@media (min-width: 1280px) {
+  .store-container { padding: 0 64px; }
+}
+
+/* Aspect ratios de produto */
+.aspect-product { aspect-ratio: 3 / 4; }
+.aspect-hero    { aspect-ratio: 16 / 9; }
+.aspect-square  { aspect-ratio: 1 / 1; }
+
+/* Input elegante */
+.input-premium {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--color-brand-gray-200);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-brand-black);
+  transition: border-color var(--duration-fast) var(--ease-premium),
+              box-shadow var(--duration-fast) var(--ease-premium);
+  outline: none;
+}
+
+.input-premium:focus {
+  border-color: var(--color-brand-black);
+  box-shadow: 0 0 0 3px rgba(10,10,10,0.06);
+}
+
+.input-premium::placeholder {
+  color: var(--color-brand-gray-400);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+/* Botão base premium */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  transition: all var(--duration-normal) var(--ease-premium);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--color-brand-black);
+  color: var(--color-brand-white);
+  padding: 16px 32px;
+}
+
+.btn-primary:hover {
+  background: var(--color-brand-gray-800);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-brand-black);
+  padding: 15px 32px;
+  border: 1px solid var(--color-brand-black);
+}
+
+.btn-secondary:hover {
+  background: var(--color-brand-black);
+  color: var(--color-brand-white);
+}
+
+.btn-nude {
+  background: var(--color-brand-nude);
+  color: var(--color-brand-white);
+  padding: 16px 32px;
+}
+
+.btn-nude:hover {
+  background: var(--color-brand-nude-dark);
+  transform: translateY(-1px);
+}
+
+/* Badge premium */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.badge-new {
+  background: var(--color-brand-black);
+  color: var(--color-brand-white);
+}
+
+.badge-sale {
+  background: var(--color-brand-nude);
+  color: var(--color-brand-white);
+}
+
+/* Divider elegante */
+.divider {
+  width: 40px;
+  height: 1px;
+  background: var(--color-brand-nude);
+  margin: 16px 0;
+}
+
+/* Label de seção */
+.section-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-brand-gray-400);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 500;
+  color: var(--color-brand-black);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
