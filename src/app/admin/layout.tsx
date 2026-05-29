@@ -27,7 +27,7 @@ export default function AdminLayout({
     <div className="flex min-h-screen bg-[#F9FAFB] text-gray-800 antialiased font-sans">
       
       {/* Sidebar Admin (Deep Luxury Dark Mode) */}
-      <aside className="w-66 bg-[#09090B] text-white flex flex-col fixed inset-y-0 left-0 z-50 border-r border-white/[0.05] shadow-[4px_0_24px_rgba(0,0,0,0.3)]">
+      <aside className="w-64 bg-[#09090B] text-white flex flex-col fixed inset-y-0 left-0 z-50 border-r border-white/[0.05] shadow-[4px_0_24px_rgba(0,0,0,0.3)]">
         {/* Brand Header */}
         <div className="h-20 flex items-center justify-center border-b border-white/[0.06] px-6">
           <Link href="/admin" className="flex items-center gap-2 group">
@@ -90,7 +90,7 @@ export default function AdminLayout({
       </aside>
 
       {/* Conteúdo Principal */}
-      <main className="flex-1 ml-66 flex flex-col min-h-screen pl-1">
+      <main className="flex-1 ml-64 flex flex-col min-h-screen pl-1">
         {/* Top Bar (Ultra premium Glassmorphic Header) */}
         <header className="h-20 bg-white/70 backdrop-blur-xl border-b border-gray-100 flex items-center justify-between px-8 sticky top-0 z-40 shadow-sm shadow-gray-100/20">
           {/* Search bar */}
