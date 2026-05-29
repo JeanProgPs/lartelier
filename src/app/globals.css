@@ -290,3 +290,26 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
   line-height: 1.1;
 }
+
+/* ——————————————————————————————————————————
+   Ajustes Premium para o Painel Admin
+   —————————————————————————————————————————— */
+.admin-dashboard, 
+.admin-dashboard h1, 
+.admin-dashboard h2, 
+.admin-dashboard h3, 
+.admin-dashboard h4, 
+.admin-dashboard h5, 
+.admin-dashboard h6 {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  letter-spacing: -0.02em !important;
+}
+
+.admin-dashboard h1 {
+  font-weight: 700;
+}
+
+.admin-dashboard h2 {
+  font-weight: 600;
+}
+
